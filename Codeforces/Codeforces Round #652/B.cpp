@@ -52,9 +52,6 @@ int main() {
 			if (str[i] == '1')newstr.push_back('1');
 			else break;
 		}
-		if (newstr[newstr.length() - 1] != '1') {
-
-		}
 		if (newstr == "") {
 			newstr = "2";
 			twostreak = 1;
