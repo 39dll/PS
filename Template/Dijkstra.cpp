@@ -16,13 +16,13 @@ void dijkstra(int start) {
 	v[start] = 0;
 	pq.push({ 0, start });
 	while (!pq.empty()) {
-		int cost = pq.top().first;
+		long long cost = pq.top().first;
 		int des = pq.top().second;
 		pq.pop();
 		if (v[des] < cost) continue;
 		for (int i = 0; i < e[des].size(); i++) {
 			int there = e[des][i].second;
-			int next = cost + e[des][i].first;
+			long long next = cost + e[des][i].first;
 			if (v[there] > next) {
 				v[there] = next;
 				pq.push({ next,there });
