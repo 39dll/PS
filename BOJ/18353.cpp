@@ -1,0 +1,25 @@
+﻿#include <bits/stdc++.h>
+using namespace std;
+int N, ans, arr[2001];
+vector<int> dp;
+int main() {
+	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	cin >> N;
+	for (int i = 1; i <= N; i++) {
+		cin >> arr[i];
+		arr[i] = 10000000 - arr[i];
+	}
+	dp.push_back(0);
+	for (int i = 1; i <= N; i++) {
+		int cur = arr[i];
+		auto lb = lower_bound(dp.begin(), dp.end(), cur) - dp.begin();
+		if (lb >= dp.size())dp.push_back(cur);
+		else dp[lb] = cur;
+		ans = max(ans, (int)lb);
+	}
+	if (N == 1) {
+		cout << 0;
+		return 0;
+	}
+	cout << N - ans;
+}
