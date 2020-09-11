@@ -1,6 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 vector<int> getPi(string p) {
 	int m = (int)p.size(), j = 0;
