@@ -1,17 +1,14 @@
-﻿#include <iostream>
+﻿#include <bits/stdc++.h>
 using namespace std;
 int uf[10001];
 int find(int a) {
 	if (a == uf[a]) return a;
-	int k = find(uf[a]);
-	return uf[a] = k;
+	return uf[a] = find(uf[a]);
 }
 void merge(int a, int b) {
 	a = find(a);
 	b = find(b);
-	if (a != b) {
-		uf[b] = a;
-	}
+	if (a != b)uf[b] = a;
 }
 int main() {
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
