@@ -26,10 +26,10 @@ int main() {
 	cin >> N >> M >> K;
 
 	//전처리
-	for (int i = 1; i <= 10000; i++) {
-		if (N <= (long long)pow(2, i - 1)) {
-			depth = i; break;
-		}
+	depth = 1;
+	while (1) {
+		if (N <= (long long)pow(2, depth - 1))break;
+		depth++;
 	}
 	st = (long long)pow(2, depth - 1) - 1; //tree[i + st]에 실제 값들이 있음
 
