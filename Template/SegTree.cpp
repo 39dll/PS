@@ -2,7 +2,7 @@
 using namespace std;
 const long long INF = 9223372036854775807;
 const long long MAX_SIZE = 1000001;
-long long tree[MAX_SIZE * 3]; //tree[N]의 자식은 tree[2*N], tree[2*N+1]
+long long tree[MAX_SIZE * 4]; //tree[N]의 자식은 tree[2*N], tree[2*N+1]
 long long N, M, K, depth, st;
 
 long long query(long long start, long long end) {
