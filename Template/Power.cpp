@@ -1,4 +1,4 @@
-long long calc(long long A, long long B, long long C) {
+long long mypow(long long A, long long B, long long C) { //return A^B % C
 	if (B == 1) { return (A % C); }
 	long long temp = calc(A, B / 2) % C;
 	if (B % 2 == 0) {
