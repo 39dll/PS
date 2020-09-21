@@ -25,7 +25,8 @@ long long updateHash(long long hash, char oldChar, char newChar, int len) {
 	hash %= MOD;
 	hash *= EXP;
 	hash += newChar;
-	return hash = hash % MOD;
+	hash %= MOD;
+	return hash;
 }
 int main() {
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
