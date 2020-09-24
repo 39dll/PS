@@ -3,7 +3,7 @@ using namespace std;
 const long long INF = 9223372036854775807;
 const long long MAX_SIZE = 1000001;
 long long tree[MAX_SIZE * 4]; //tree[N]의 자식은 tree[2*N], tree[2*N+1]
-long long N, M, K, depth, st;
+long long N, M, depth, st;
 
 long long query(long long start, long long end) {
 	long long ret = 0;
@@ -23,7 +23,7 @@ int main() {
 	//for (int i = 0; i < MAX_SIZE * 3; i++)tree[i] = 0;
 
 	//수의 개수, 쿼리의 개수
-	cin >> N >> M >> K;
+	cin >> N;
 
 	//전처리
 	depth = 1;
@@ -45,9 +45,11 @@ int main() {
 			tree[ind] = tree[ind * 2] + tree[ind * 2 + 1];
 		}
 	}
+	
+	cin >> M;
 
 	//쿼리 처리
-	for (int t = 0; t < M + K; t++) {
+	for (int t = 0; t < M; t++) {
 		int in1, in2, in3;
 		cin >> in1 >> in2 >> in3;
 
