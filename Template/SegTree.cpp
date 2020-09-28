@@ -66,6 +66,4 @@ int main() {
 			cout << query(st + in2, st + in3) << '\n';
 		}
 	}
-
-
 }
