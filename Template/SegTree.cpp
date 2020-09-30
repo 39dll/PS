@@ -30,7 +30,7 @@ int main() {
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
 	//초기화
-	//for (int i = 0; i < MAX_SIZE * 3; i++)tree[i] = 0;
+	//for (int i = 0; i < MAX_SIZE * 4; i++)tree[i] = 0;
 
 	//수의 개수
 	cin >> N;
