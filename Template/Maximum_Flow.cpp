@@ -58,25 +58,17 @@ int bfs(int S, int T) {
 	return flow;
 }
 
-int getInt(char c) {
-	if (c <= 'Z')return c - 'A';
-	return c - 'a' + 26;
-}
-
 int main() {
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-	int N;
-	cin >> N;
+	int N; cin >> N;
 	for (int i = 0; i < N; i++) {
-		char in1, in2; //A ~ Z : 0 ~ 25, a ~ z : 26 ~ 51
-		int in3;
+		int in1, in2, in3;
 		cin >> in1 >> in2 >> in3;
-		in1 = getInt(in1);
-		in2 = getInt(in2);
 		c[in1][in2] += in3;
 		c[in2][in1] += in3;
 		edge[in1].push_back(in2);
 		edge[in2].push_back(in1);
 	}
-	cout << maxFlow(getInt('A'), getInt('Z'));
+	int S, T; cin >> S >> T;
+	cout << maxFlow(S, T);
 }
