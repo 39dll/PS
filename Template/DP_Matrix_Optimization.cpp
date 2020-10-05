@@ -1,4 +1,4 @@
-﻿#include <iostream>
+﻿#include <bits/stdc++.h>
 using namespace std;
 long long a[3][3], a2[3][3], ans[3][3], temp[3][3], N;
 void mult(long long a[3][3], long long b[3][3]) {
