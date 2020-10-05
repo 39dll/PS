@@ -31,7 +31,7 @@ void dijkstra(int start) {
 	}
 }
 int main() {
-	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 	cin >> V >> E >> K;
 	for (int i = 1; i <= E; i++) {
 		long long in1, in2, in3;
