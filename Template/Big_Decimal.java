@@ -35,7 +35,7 @@ public class Main {
       // divide 연산 후 무한소수일때 올림 지정 안하면 예외발생
       
       a.setScale(6);
-      // 소수점 밑으로 3자리까지로 제한
+      // 소수점 밑으로 6자리까지로 제한
       // 이때 기존 소수점이 설정한 자릿수보다 많으면 예외 발생
       
       a.setScale(3, BigDecimal.ROUND_HALF_UP);
