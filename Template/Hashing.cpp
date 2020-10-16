@@ -19,14 +19,13 @@ long long getHash(string str) {
 	return curHash;
 }
 //remove oldChar and add newChar
-long long updateHash(long long hash, char oldChar, char newChar) {
+void updateHash(long long &hash, char oldChar, char newChar) {
 	hash -= fnpow * oldChar;
 	hash += fnpow * MOD;
 	hash %= MOD;
 	hash *= EXP;
 	hash += newChar;
 	hash %= MOD;
-	return hash;
 }
 int main() {
 	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -44,7 +43,7 @@ int main() {
 	vector<int> ans;
 	for (int i = 0; i < (int)str1.length() - len + 1; i++) {
 		if (um.find(hash) != um.end())ans.push_back(i + 1);
-		if (i != str1.length() - len)hash = updateHash(hash, str1[i], str1[i + len]);
+		if (i != str1.length() - len)updateHash(hash, str1[i], str1[i + len]);
 	}
 	cout << ans.size() << '\n';
 	for (int i : ans)cout << i << ' ';
