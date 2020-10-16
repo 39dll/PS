@@ -8,8 +8,8 @@ long long fnpow;
 //get initial hash for str
 long long getHash(string str) {
 	long long exp = 1;
-	long long curHash = str[str.length() - 1];
-	for (int i = str.length() - 2; i >= 0; i--) {
+	long long curHash = str[(int)str.length() - 1];
+	for (int i = (int)str.length() - 2; i >= 0; i--) {
 		exp *= EXP;
 		exp %= MOD;
 		curHash += exp * str[i];
@@ -42,7 +42,7 @@ int main() {
 	string temp = str1.substr(0, len);
 	long long hash = getHash(temp);
 	vector<int> ans;
-	for (int i = 0; i < str1.length() - len + 1; i++) {
+	for (int i = 0; i < (int)str1.length() - len + 1; i++) {
 		if (um.find(hash) != um.end())ans.push_back(i + 1);
 		if (i != str1.length() - len)hash = updateHash(hash, str1[i], str1[i + len], len);
 	}
