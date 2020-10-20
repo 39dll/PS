@@ -1,6 +1,6 @@
 ﻿#include <bits/stdc++.h>
 using namespace std;
-const int MAX = 1001;
+const int MAX = 10001;
 
 //A[i], B[i] : 각 정점이 매칭된 반대편 정점 인덱스
 int N, M, A[MAX], B[MAX];
