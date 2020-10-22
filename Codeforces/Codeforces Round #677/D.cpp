@@ -1,7 +1,6 @@
-﻿#include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int uf[5001];
-int N;
+int N, uf[5001];
 int find(int a) {
 	if (uf[a] == a) return a;
 	return uf[a] = find(uf[a]);
