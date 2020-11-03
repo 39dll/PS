@@ -1,18 +1,16 @@
-#include <bits/stdc++.h>
-using namespace std;
-int N, ans, arr[1000001];
-vector<int> dp;
-int main() {
-	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-	cin >> N;
-	for (int i = 1; i <= N; i++)cin >> arr[i];
-	dp.push_back(0);
-	for (int i = 1; i <= N; i++) {
-		int cur = arr[i];
-		auto lb = lower_bound(dp.begin(), dp.end(), cur) - dp.begin();
-		if (lb >= dp.size())dp.push_back(cur);
-		else dp[lb] = cur;
-		ans = max(ans, (int)lb);
+typedef pair<int, int> p;
+vector<int> lis(const vector<int> &v) {
+	if (v.empty())return{};
+	vector<int> prev(v.size());
+	vector<p> res;
+	for (int i = 0; i < v.size(); i++) {
+		auto it = lower_bound(res.begin(), res.end(), p{ v[i],0 });
+		if (it == res.end())res.emplace_back(), it = res.end() - 1;
+		*it = { v[i],i };
+		prev[i] = it == res.begin() ? 0 : (it - 1)->second;
 	}
-	cout << ans << '\n';
+	int L = res.size(), cur = res.back().second;
+	vector<int> ans(L);
+	while (L--)ans[L] = cur, cur = prev[cur];
+	return ans;
 }
