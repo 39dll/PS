@@ -11,4 +11,4 @@ Codeforces
 https://codeforces.com/profile/39dll
 
 Blog
-netcopjr.tistory.com
+https://netcopjr.tistory.com
