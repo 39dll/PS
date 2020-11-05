@@ -9,3 +9,6 @@ https://www.acmicpc.net/user/39dll
 
 Codeforces
 https://codeforces.com/profile/39dll
+
+Blog
+netcopjr.tistory.com
