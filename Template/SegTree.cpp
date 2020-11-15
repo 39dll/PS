@@ -1,65 +1,61 @@
-#include <bits/stdc++.h>
-using namespace std;
-const long long MAX_SIZE = 1000001;
-long long tree[MAX_SIZE * 4];
-long long N, M, depth, st;
+struct SegTree {
+   int sz, st, dep;
+   vector<long long> pw2, v;
 
-void update(long long ind, long long val) {
-	tree[st + ind] = val;
-	ind = (ind + 1) / 2;
-	for (int i = depth - 1; i >= 1; i--) {
-		int cur = pow(2, i - 1) - 1 + ind;
-		tree[cur] = tree[cur * 2] + tree[cur * 2 + 1];
-		ind = (ind + 1) / 2;
-	}
-}
-
-long long query(long long start, long long end) {
-	long long ret = 0;
-	start += st; end += st;
-	while (start <= end) {
-		if (start % 2 == 1) ret += tree[start];
-		if (end % 2 == 0) ret += tree[end];
-		start = (start + 1) / 2;
-		end = (end - 1) / 2;
-	}
-	return ret;
-}
-
-int main() {
-	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
-	cin >> N;
-
-	depth = 1;
-	while (1) {
-		if (N <= (long long)pow(2, depth - 1))break;
-		depth++;
-	}
-	st = (long long)pow(2, depth - 1) - 1;
-
-	for (int i = 1; i <= N; i++) {
-		cin >> tree[i + st];
-	}
-
-	for (int i = depth - 1; i >= 1; i--) {
-		for (int j = 0; j < pow(2, i - 1); j++) {
-			long long ind = pow(2, i - 1) + j;
-			tree[ind] = tree[ind * 2] + tree[ind * 2 + 1];
-		}
-	}
-
-	cin >> M;
-
-	for (int t = 0; t < M; t++) {
-		int in1, in2, in3;
-		cin >> in1 >> in2 >> in3;
-
-		if (in1 == 1) {//set in2-nd index to in3
-			update(in2, in3);
-		}
-		else if (in1 == 2) {//perform query for in2 ~ in3
-			cout << query(in2, in3) << '\n';
-		}
-	}
-}
+   SegTree(int size) {
+      long long k = 1;
+      for (int i = 0; i < 30; i++) {
+         pw2.push_back(k); k <<= 1;
+      }
+      sz = size;
+      v.resize(sz * 4, 0);
+      dep = 1;
+      while(1) {
+         if (sz <= pw2[dep - 1])break;
+         dep++;
+      }
+      st = pw2[dep - 1] - 1;
+   }
+   void init(long long val) {
+      for (int i = 1; i < 4 * sz; i++) {
+         v[i] = val;
+      }
+   }
+   long long val(int ind) {
+      return v[st + ind];
+   }
+   void update(int ind, long long val) {
+      v[st + ind] = val;
+      ind = (ind + 1) / 2;
+      for (int i = dep - 1; i >= 1; i--) {
+         int cur = pw2[i - 1] - 1 + ind;
+         v[cur] = v[cur * 2] + v[cur * 2 + 1];
+         ind = (ind + 1) / 2;
+      }
+   }
+   long long query(int start, int end) {
+      long long ret = 0;
+      start += st; end += st;
+      while (start <= end) {
+         if (start % 2 == 1)ret += v[start];
+         if (end % 2 == 0)ret += v[end];
+         start = (start + 1) / 2;
+         end = (end - 1) / 2;
+      }
+      return ret;
+   }
+   int kth(long long val) {
+      int ptr = 1;
+      while (ptr <= st) {
+         if (val <= v[ptr * 2]) {
+            ptr <<= 1;
+         }
+         else {
+            val -= v[ptr * 2];
+            ptr = ptr * 2 + 1;
+         }
+      }
+      ptr -= st;
+      return ptr;
+   }
+};
