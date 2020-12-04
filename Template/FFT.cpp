@@ -29,7 +29,7 @@ void fft(vector <base> &a, bool invert) {
 		for (int i = 0; i<n; i++) a[i] /= n;
 }
 
-void mul(const vector<int> &a, const vector<int> &b, vector<int> &res) {
+vector<int> mul(const vector<int> &a, const vector<int> &b) {
 	vector<base> fa(a.begin(), a.end()), fb(b.begin(), b.end());
 	int n = 1;
 	while (n < max(a.size(), b.size())) n <<= 1;
@@ -38,8 +38,10 @@ void mul(const vector<int> &a, const vector<int> &b, vector<int> &res) {
 	fft(fa, false); fft(fb, false);
 	for (int i = 0; i < n; i++) fa[i] *= fb[i];
 	fft(fa, true);
+	vector<int> res;
 	res.resize(n);
 	for (int i = 0; i < n; i++) res[i] = int(fa[i].real() + 0.5);
+	return res;
 }
 
 int main() {
@@ -55,7 +57,7 @@ int main() {
 		int in; cin >> in;
 		v2.push_back(in);
 	}
-	mul(v1, v2, res);
+	vector<int> res = mul(v1, v2);
 	for (int i = 0; i < N + M - 1; i++) {
 		cout << res[i] << ' ';
 	}
