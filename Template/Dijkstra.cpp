@@ -7,10 +7,9 @@ vector<long long> dijkstra(int start) {
 	v[start] = 0;
 	pq.push({ 0, start });
 	while (!pq.empty()) {
-		long long cost, des;
+		long long cost, des, next, there;
 		tie(cost, des) = pq.top(); pq.pop();
 		for (auto k : e[des]) {
-			long long next, there;
 			tie(next, there) = k; next += cost;
 			if (v[there] > next) {
 				v[there] = next;
