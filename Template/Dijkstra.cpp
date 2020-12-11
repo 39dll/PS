@@ -4,8 +4,7 @@ vector<long long> dijkstra(int start) {
 	vector<long long> v(N + 1);
 	for (auto &i : v)i = INF;
 	priority_queue<p, vector<p>, greater<p>> pq;
-	v[start] = 0;
-	pq.push({ 0, start });
+	v[start] = 0; pq.push({ 0, start });
 	while (!pq.empty()) {
 		long long cost, des, next, there;
 		tie(cost, des) = pq.top(); pq.pop();
