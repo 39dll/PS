@@ -9,10 +9,12 @@ struct LiChao {
 		line l;
 	};
 	vector<Node> nodes;
-	LiChao() { init(-1e12, 1e12); }
+	LiChao() { init(-1e9, 1e9); }
 	void init(long long xmin, long long xmax) {
 		nodes.push_back({ -1,-1,xmin,xmax,{0,-1e18} });
 	}
+	void insert(line newline) { insert(0, newline); }
+	long long get(long long xq) { get(0, xq); }
 	void insert(int n, line newline) {
 		long long xl = nodes[n].xl, xr = nodes[n].xr;
 		long long xm = (xl + xr) / 2;
