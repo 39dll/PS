@@ -8,7 +8,7 @@ struct lazy {
 			fill(arr, arr + sz, 0);
 		}
 		void update(int i, long long x) {
-			while (i <= sz) {
+			while (i < sz) {
 				arr[i] += x;
 				i += i & -i;
 			}
