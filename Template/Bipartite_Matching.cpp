@@ -38,7 +38,7 @@ int main() {
 	int match = 0;
 	fill(A + 1, A + MAX - 1, -1);
 	fill(B + 1, B + MAX - 1, -1);
-	for (int i = 1; i <= N; i++) {
+	for (int i = 1; i < MAX; i++) {
 		if (A[i] == -1) {
 			fill(visited + 1, visited + MAX - 1, 0);
 			if (dfs(i))match++;
