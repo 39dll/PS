@@ -1,18 +1,17 @@
-﻿#include <bits/stdc++.h>
-using namespace std;
-int uf[10001];
-int find(int a) {
-	if (a == uf[a]) return a;
-	return uf[a] = find(uf[a]);
-}
-void merge(int a, int b) {
-	a = find(a);
-	b = find(b);
-	if (a != b)uf[b] = a;
-}
-int main() {
-	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-	for (int i = 1; i <= 10000; i++) { //초기화
-		uf[i] = i;
-	}
-}
+struct UF {
+    vector<int> uf;
+    UF(int sz) {
+        uf.resize(sz + 1);
+        for(int i = 0; i < sz + 1; i++) {
+            uf[i] = i;
+        }
+    }
+    int find(int ind) {
+        if(ind == uf[ind]) return ind;
+        return uf[ind] = find(uf[ind]);
+    }
+    void merge(int ind1, int ind2) {
+        ind1 = find(ind1), ind2 = find(ind2);
+        if (ind1 != ind2)uf[ind2] = ind1;
+    }
+};
