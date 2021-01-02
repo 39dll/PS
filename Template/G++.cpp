@@ -15,6 +15,5 @@ int main(){
     //main
 
     dout << setprecision(3) << fixed << "\nRuntime : " << (clock() - clockst) / double(CLOCKS_PER_SEC) << "sec\n";
-    cout.flush();
-    if (DEBUG)system("pause");
+    if (DEBUG)cout.flush(), system("pause");
 }
