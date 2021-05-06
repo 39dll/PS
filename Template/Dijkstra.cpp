@@ -1,4 +1,5 @@
-typedef pair<long long, int> p;
+typedef pair<ll, int> p;
+const ll INF = 10000000000000000;
 
 auto dijkstra = [&](int start, vector<p> e[]) -> vector<ll>{
 		vector<long long> v(N + 1);
