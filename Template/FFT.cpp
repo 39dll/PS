@@ -3,7 +3,7 @@ using ld = double;
 using base = complex<ld>;
 const ld pi = acos(-1);
 
-void fft(vector <base> &A, bool f) {
+void fft(vector<base> &A, bool f) {
 	int k = A.size(), i, j, l, t;
 	base w, x, y; ld th;
 	for (i = 1, j = 0; i < k; i++) {
@@ -15,7 +15,7 @@ void fft(vector <base> &A, bool f) {
 		w = base(cos(th), sin(th));
 		for (j = 0; j < k; j += i + i) {
 			for (l = 0; l < i; l++) {
-				if(l & 2047) x *= w;
+				if (l & 2047) x *= w;
 				else x = l ? base(cos(th * l), sin(th * l)) : 1;
 				y = x * A[l | i | j];
 				A[l | i | j] = A[l | j] - y;
