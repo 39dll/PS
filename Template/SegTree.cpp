@@ -23,7 +23,6 @@ struct SegTree {
         	ll cur = pw2[i - 1] - 1 + ind;
         	v[cur] = v[cur * 2] + v[cur * 2 + 1];
         	ind = (ind + 1) / 2;
-    	}
 	}
    	ll query(ll start, ll end) {
     	ll ret = 0;
