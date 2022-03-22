@@ -10,7 +10,7 @@ vector<int> manacher(string& src) {
    for (int i = 0; i < len; ++i) {
       int sym = 2 * c - i;
       if (i < r) ret[i] = min(r - i, ret[sym]);
-      while (i - ret[i] > 0 && i + ret[i] - 1 < len && src[i - ret[i] - 1] == src[i + ret[i] + 1]) ret[i]++;
+      while (i - ret[i] >= 0 && i + ret[i] - 1 < len && src[i - ret[i] - 1] == src[i + ret[i] + 1]) ret[i]++;
       if (ret[i] + i > r) r = ret[i] + i, c = i;
    }
    return ret;
